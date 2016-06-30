@@ -1,0 +1,53 @@
+// SimpleComServer.idl : IDL source for SimpleComServer
+//
+
+// This file will be processed by the MIDL tool to
+// produce the type library (SimpleComServer.tlb) and marshalling code.
+
+import "oaidl.idl";
+import "ocidl.idl"; 
+
+[
+	object,
+	uuid(5B93ACD7-21B3-4747-B9E3-45660F1EBC5A),
+	dual,
+	nonextensible,
+	pointer_default(unique)
+]
+interface ISmartControl : IDispatch{
+
+	HRESULT GetServices(
+		[out] BSTR* str
+		);
+
+	HRESULT  GetServiceStatus(
+		[in] BSTR* str,
+		[out] DWORD *rstatus
+		);
+
+	HRESULT  StopMyService(
+		[in] BSTR* str
+		);
+
+	HRESULT  StartMyService(
+		[in] BSTR* str
+		);
+
+	[id(1)] HRESULT call([in] BSTR c);
+};
+[
+	uuid(FD59672A-086F-4FE1-9CBD-AEBDC6638964),
+	version(1.0),
+]
+library SimpleComServerLib
+{
+	importlib("stdole2.tlb");
+	[
+		uuid(7FCEF122-B85D-4477-A2C5-E679FEEA149E)		
+	]
+	coclass SmartControl
+	{
+		[default] interface ISmartControl;
+	};
+};
+

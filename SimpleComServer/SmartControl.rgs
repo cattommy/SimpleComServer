@@ -1,0 +1,16 @@
+HKCR
+{
+	NoRemove CLSID
+	{
+		ForceRemove {7FCEF122-B85D-4477-A2C5-E679FEEA149E} = s 'SmartControl Class'
+		{
+			ForceRemove Programmable
+			InprocServer32 = s '%MODULE%'
+			{
+				val ThreadingModel = s 'Apartment'
+			}
+			TypeLib = s '{FD59672A-086F-4FE1-9CBD-AEBDC6638964}'
+			Version = s '1.0'
+		}
+	}
+}
